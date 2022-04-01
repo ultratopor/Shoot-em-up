@@ -19,12 +19,12 @@ public class BulletMovement : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
-            _newPosition = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            _newPosition = hit.point;
         }
     }
 
     public void GetPlayerPosition()
     {
-        _newPosition = new Vector3(_player.position.x, _player.position.y, _player.position.z);
+        _newPosition = _player.position;
     }
 }

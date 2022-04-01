@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\UIStates.cs" />
     <Compile Include="Assets\Scripts\Shooting.cs" />
+    <Compile Include="Assets\Scripts\Teleport.cs" />
+    <Compile Include="Assets\Scripts\SwithTeleport.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
