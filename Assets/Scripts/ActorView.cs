@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class ActorView : MonoBehaviour
 {
-    private Animator animator;
+    private Animator _animator;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     public void PlayDeathAnimation()
     {
-        animator.SetTrigger("DeathTriggerAnim");
+        _animator.SetTrigger("DeathTriggerAnim");
     }
 }
