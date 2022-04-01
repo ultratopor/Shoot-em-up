@@ -10,7 +10,10 @@ public class BulletMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, _newPosition, _speed);
 
-        if (transform.position == _newPosition) this.gameObject.SetActive(false);
+        if (transform.position == _newPosition)
+        { 
+            this.gameObject.SetActive(false); 
+        }
     }
 
     public void GetNewPosition()
