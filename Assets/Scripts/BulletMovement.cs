@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletMovement : MonoBehaviour
+public class BulletMovement : MonoBehaviour                                             // вешается на Bullet и EnemyBullet
 {
     [Range(0, 1)] public float _speed;
     private Vector3 _newPosition;

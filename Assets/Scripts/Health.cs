@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [Range(1,4)] public int _currentHealth;
+    [Range(1,55)] public int _currentHealth;
     private bool _isAlive=true;
 
     private ActorView _actorView;

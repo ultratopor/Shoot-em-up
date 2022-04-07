@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Teleport : MonoBehaviour
+public class Teleport : MonoBehaviour               // вешается на Teleport Enemy_1
 {
     [SerializeField] private GameObject _player;
     [SerializeField] private float _time;

@@ -27,22 +27,32 @@ public class Shooting : MonoBehaviour
 
     public void Fire()
     {
+        SpawningObjects();
+
+        if (_roundMagazne[_orderBullet].GetComponent<Collider>().CompareTag("Bullet"))
+        {
+            _roundMagazne[_orderBullet].GetComponent<BulletMovement>().GetNewPosition();
+        }
+
+        if (_roundMagazne[_orderBullet].GetComponent<Collider>().CompareTag("EnemyBullet"))
+        {
+            _roundMagazne[_orderBullet].GetComponent<BulletMovement>().GetPlayerPosition();
+        }
+
+        IncreasingOrderBullet();
+    }
+
+    public void SpawningObjects()
+    {
         if (!_roundMagazne[_orderBullet].activeSelf)
         {
             _roundMagazne[_orderBullet].SetActive(true);
             _roundMagazne[_orderBullet].transform.position = transform.position;
-
-            if(_roundMagazne[_orderBullet].GetComponent<Collider>().CompareTag("Bullet"))
-            {
-                _roundMagazne[_orderBullet].GetComponent<BulletMovement>().GetNewPosition();
-            }
-
-            if (_roundMagazne[_orderBullet].GetComponent<Collider>().CompareTag("EnemyBullet"))
-            {
-                _roundMagazne[_orderBullet].GetComponent<BulletMovement>().GetPlayerPosition();
-            }
-
-            _orderBullet++;
         }
+    }
+
+    public void IncreasingOrderBullet()
+    {
+        _orderBullet++;
     }
 }

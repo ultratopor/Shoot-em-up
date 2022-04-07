@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Shooting _shootingPoint;
     [SerializeField] [Range(1, 20)] private float _distanceToPlayer;
     [SerializeField] [Range(2,6)] private float _timeToShoot;
+    [SerializeField] private bool _isEnemyShoot;
     private float _temp;
-    private bool _stop=true;
 
     private void Awake()
     {
@@ -21,40 +21,46 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_stop)
+        #region Shooting  условия выстрела врага 
+        if (_isEnemyShoot)
         {
-            _navMeshAgent.SetDestination(_player.position);
-        }
-        else
-        {
-            _navMeshAgent.SetDestination(transform.position);
-        }
-        
-        
-        #region Shooting
-        Vector3 heading = _player.position - transform.position;
-        float distance = heading.magnitude;
-
-        _temp -= Time.deltaTime;
-
-        if(distance<_distanceToPlayer)
-        {
-            if(_temp<0)
+            if (CalcDistanseToPlayer() <= _distanceToPlayer)
             {
-                _temp = _timeToShoot;
-                _shootingPoint.Fire();
+                if (_temp < 0)
+                {
+                    _temp = _timeToShoot;
+                    _shootingPoint.Fire();
+                }
             }
         }
         #endregion
     }
 
-    public void Stoping()
+    public float CalcDistanseToPlayer()
     {
-        _stop = false;
+        Vector3 heading = _player.position - transform.position;
+        float distance = heading.magnitude;
+        return distance;
     }
 
+    public float SetDistanseToPlayer()
+    {
+        return _distanceToPlayer;
+    }
+
+    /// <summary>
+    /// остановка движения врага
+    /// </summary>
+    public void Stoping()
+    {
+        _navMeshAgent.SetDestination(transform.position);
+    }
+    /// <summary>
+    /// продолжение движения врага в сторону игрока
+    /// </summary>
     public void Starting()
     {
-        _stop = true;
+        _navMeshAgent.SetDestination(_player.position);
+        _temp -= Time.deltaTime;
     }
 }

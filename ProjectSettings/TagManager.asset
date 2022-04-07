@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - Teleport
   - Ground
+  - Dome
   layers:
   - Default
   - TransparentFX
