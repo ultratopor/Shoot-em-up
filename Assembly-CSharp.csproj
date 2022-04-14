@@ -56,9 +56,12 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\FireBallController.cs" />
     <Compile Include="Assets\Scripts\FireBulletMovement.cs" />
+    <Compile Include="Assets\Scripts\FireAreaShooting.cs" />
     <Compile Include="Assets\Scripts\FireBulletController.cs" />
     <Compile Include="Assets\Scripts\Teleport.cs" />
+    <Compile Include="Assets\Scripts\FireBallAreaController.cs" />
     <Compile Include="Assets\Scripts\BulletMovement.cs" />
     <Compile Include="Assets\Scripts\ActivateTeleport.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
@@ -68,15 +71,12 @@
     <Compile Include="Assets\Scripts\EnemyTakeDamage.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\GameData.cs" />
+    <Compile Include="Assets\Scripts\SwitchDome.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemy_4.cs" />
     <Compile Include="Assets\Scripts\UIStates.cs" />
     <Compile Include="Assets\Scripts\Shooting.cs" />
-    <Compile Include="Assets\Scripts\FireBallController.cs" />
-    <Compile Include="Assets\Scripts\FireAreaShooting.cs" />
-    <Compile Include="Assets\Scripts\FireBallAreaController.cs" />
-    <Compile Include="Assets\Scripts\SwitchDome.cs" />
-    <Compile Include="Assets\Scripts\Enemy_4.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
