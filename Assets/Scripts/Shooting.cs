@@ -20,28 +20,6 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        if (_orderBullet == _count) _orderBullet = 0;
-    }
-
-    public void Fire()
-    {
-        SpawningObjects();
-
-        if (_roundMagazne[_orderBullet].GetComponent<Collider>().CompareTag("Bullet"))
-        {
-            _roundMagazne[_orderBullet].GetComponent<BulletMovement>().GetNewPosition();
-        }
-
-        if (_roundMagazne[_orderBullet].GetComponent<Collider>().CompareTag("EnemyBullet"))
-        {
-            _roundMagazne[_orderBullet].GetComponent<BulletMovement>().GetPlayerPosition();
-        }
-
-        IncreasingOrderBullet();
-    }
-
     public void SpawningObjects()
     {
         if (!_roundMagazne[_orderBullet].activeSelf)
@@ -49,10 +27,8 @@ public class Shooting : MonoBehaviour
             _roundMagazne[_orderBullet].SetActive(true);
             _roundMagazne[_orderBullet].transform.position = transform.position;
         }
-    }
-
-    public void IncreasingOrderBullet()
-    {
         _orderBullet++;
+
+        if (_orderBullet == _count) _orderBullet = 0;
     }
 }

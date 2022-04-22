@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 2609250891982190330}
   - component: {fileID: 2609250891982188805}
   - component: {fileID: 2609250891982188804}
-  - component: {fileID: 2609250891982190328}
+  - component: {fileID: 8781545828267709762}
+  - component: {fileID: 1542559251201927858}
   m_Layer: 0
   m_Name: FireArea
   m_TagString: EnemyBullet
@@ -30,10 +31,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
-  m_Children:
-  - {fileID: 2609250892310518697}
+  m_Children: []
   m_Father: {fileID: 2609250892693455668}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2609250891982190330
 MeshFilter:
@@ -97,7 +97,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2609250891982190328
+--- !u!114 &8781545828267709762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,14 +106,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2609250891982188806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0493d47f30d8c684191daed4d4863208, type: 3}
+  m_Script: {fileID: 11500000, guid: e012c30df5edf5a4fb182323530a4e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireBallTime: 3
-  _maxBalls: 4
-  _fireBallObject: {fileID: 2609250892310518696}
+  _bullet: {fileID: 2609250892310518696}
   _roundMagazne: []
   _count: 4
+--- !u!114 &1542559251201927858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2609250891982188806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258fed86a7756ff48b48e7904d1a4e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeToShootFireBall: 2
+  _countOfBalls: 4
 --- !u!1 &2609250892310518696
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,11 +156,11 @@ Transform:
   m_GameObject: {fileID: 2609250892310518696}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.30000004}
+  m_LocalScale: {x: 0.45000005, y: 0.45000005, z: 0.45000005}
   m_Children:
   - {fileID: 2609250892727029512}
-  m_Father: {fileID: 2609250891982188807}
-  m_RootOrder: 0
+  m_Father: {fileID: 2609250892693455668}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2609250892310518700
 MeshFilter:
@@ -273,6 +285,7 @@ Transform:
   - {fileID: 7070897403681774002}
   - {fileID: 595580520894216530}
   - {fileID: 2609250893479506320}
+  - {fileID: 2609250892310518697}
   - {fileID: 2609250891982188807}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -385,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cdd6f4a1a2b73a4eb213349c6c86f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _activeTime: 3
+  _activeTime: 2
 --- !u!1 &2609250893479506323
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +411,7 @@ GameObject:
   - component: {fileID: 2609250893479506324}
   - component: {fileID: 2609250893479506327}
   - component: {fileID: 2609250893479506326}
-  - component: {fileID: 2609250893479506321}
+  - component: {fileID: 3539188032537924582}
   m_Layer: 0
   m_Name: FireBullet
   m_TagString: EnemyBullet
@@ -482,7 +495,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2609250893479506321
+--- !u!114 &3539188032537924582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -491,11 +504,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2609250893479506323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34fd78aeee12364db65e1a95de14f43, type: 3}
+  m_Script: {fileID: 11500000, guid: e10a06ff5c708bc4692634fe03d76918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireArea: {fileID: 2609250891982188806}
-  _speed: 0.201
+  _speed: 0
+  _player: {fileID: 0}
 --- !u!1 &6363368675300644183
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,6 +636,7 @@ GameObject:
   - component: {fileID: 7070897403681774004}
   - component: {fileID: 7070897403681774011}
   - component: {fileID: 7070897403681774009}
+  - component: {fileID: 8069735753281017763}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -733,9 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _shootingPoint: {fileID: 7070897404133044950}
   _distanceToPlayer: 1
-  _timeToShoot: 6
 --- !u!114 &7070897403681774004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,6 +798,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8069735753281017763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070897403681774008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1946aed2b65fe6d4d9bdb6227afaa7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingPoint: {fileID: 7070897404133044949}
+  _timeToShoot: 2.7
+  _timeToShootFireBullet: 8.13
 --- !u!1 &7070897404133044949
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,10 +872,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da977a4a9f62d9d4b890b5d1c3fd1a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _fireBullet: {fileID: 2609250893479506323}
-  _enemy: {fileID: 7070897403681774005}
-  _minDistanse: 1
-  _maxDistanse: 15
-  _timeToShoot: 10
-  _timeToStop: 2
+  _fireArea: {fileID: 0}
