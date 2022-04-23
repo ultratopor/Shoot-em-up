@@ -5,8 +5,8 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Transform _player;
+    [SerializeField] private float _distanceToPlayer;
     private NavMeshAgent navMeshAgent;
-    [SerializeField] [Range(1, 20)] private float _distanceToPlayer;
 
     private void Awake()
     {
@@ -14,12 +14,17 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // рассчёт дистанции до игрока
-    public bool CalcDistanseToPlayer()
+    public float CalcDistanseToPlayer()
     {
         Vector3 heading = _player.position - transform.position;
         float distance = heading.magnitude;
 
-        return (distance<=_distanceToPlayer)?true:false;
+        return distance;
+    }
+
+    public bool BoolDistanceToPlayer()
+    {
+        return (CalcDistanseToPlayer() <= _distanceToPlayer) ? true : false;
     }
 
     /// <summary>

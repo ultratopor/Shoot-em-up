@@ -2,20 +2,29 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [Range(1,55)] public int _currentHealth;
-    private bool _isAlive=true;
+    // здоровье
+    [SerializeField] [Range(1,4)] private int _currentHealth;
 
-    private ActorView _actorView;
+    // включать в Enemy_1, Enemy_2, Enemy_3
+    [SerializeField] private bool _enemyFromSpawn;
+
+    // включать в Enemy_1, Enemy_2, Enemy_3
+    [SerializeField] private Spawner _game;
+
+    private bool isAlive=true;
+
+    private ActorView actorView;
 
     private void Awake()
     {
-        _actorView = GetComponent<ActorView>();
+        actorView = GetComponent<ActorView>();
     }
 
     private void FixedUpdate()
     {
-        if (!_isAlive)
+        if (!isAlive)
         {
+            if (_enemyFromSpawn) _game.KillEnemy();
             this.gameObject.SetActive(false);
         }
     }
@@ -27,7 +36,7 @@ public class Health : MonoBehaviour
         if(_currentHealth<=0)
         {
             _currentHealth = 0;
-            _isAlive = false;
+            isAlive = false;
             //actorView.PlayDeathAnimation();
         }
     }

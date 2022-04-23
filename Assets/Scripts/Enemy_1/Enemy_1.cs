@@ -27,7 +27,7 @@ public class Enemy_1 : MonoBehaviour
     {
         enemyMovement.Starting();
 
-        if (enemyMovement.CalcDistanseToPlayer())
+        if (enemyMovement.BoolDistanceToPlayer())
         {
             if (!isShoot)
             {

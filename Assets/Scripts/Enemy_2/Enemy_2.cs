@@ -27,7 +27,7 @@ public class Enemy_2 : MonoBehaviour
     {
         if(!isShootFireBullet) enemyMovement.Starting();
 
-        if (enemyMovement.CalcDistanseToPlayer())
+        if (enemyMovement.BoolDistanceToPlayer())
         {
             if (!isShoot)
             {
