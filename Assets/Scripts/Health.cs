@@ -11,7 +11,13 @@ public class Health : MonoBehaviour
     // включать в Enemy_1, Enemy_2, Enemy_3
     [SerializeField] private Spawner _game;
 
+    // родительский объект
+    [SerializeField] private GameObject _parentObject;
+
     private bool isAlive=true;
+
+    //
+    [Range(0,4)] private int health;
 
     private ActorView actorView;
 
@@ -20,24 +26,37 @@ public class Health : MonoBehaviour
         actorView = GetComponent<ActorView>();
     }
 
+    private void OnEnable()
+    {
+        health = _currentHealth;
+    }
+
     private void FixedUpdate()
     {
         if (!isAlive)
         {
             if (_enemyFromSpawn) _game.KillEnemy();
-            this.gameObject.SetActive(false);
+            _parentObject.SetActive(false);
+            transform.position = _parentObject.transform.position;
+            isAlive = true;
         }
     }
 
     public void TakeDamage(int dmg)
     {
-        _currentHealth -= dmg;
+        health -= dmg;
         Debug.Log("TakeDamage");
-        if(_currentHealth<=0)
+        if(health<=0)
         {
-            _currentHealth = 0;
+            health = 0;
             isAlive = false;
             //actorView.PlayDeathAnimation();
         }
+    }
+
+    public void TakeAidKit()
+    {
+        health++;
+        if (health > _currentHealth) health = _currentHealth;
     }
 }

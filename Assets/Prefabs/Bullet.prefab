@@ -94,7 +94,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7120886061860448215
 MonoBehaviour:
@@ -110,3 +110,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.311
   _player: {fileID: 7694074087019685350, guid: 03dc8aaafcb5035419eb05e6d77bd838, type: 3}
+  _isFireBullet: 0
+  _enemyShootingPoint: {fileID: 0}

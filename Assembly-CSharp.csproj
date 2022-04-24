@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Enemy_3\Enemy_4.cs" />
     <Compile Include="Assets\Scripts\UIStates.cs" />
     <Compile Include="Assets\Scripts\Shooting.cs" />
+    <Compile Include="Assets\Scripts\Player\GetAidKit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

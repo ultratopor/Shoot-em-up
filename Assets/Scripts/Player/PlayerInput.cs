@@ -4,14 +4,29 @@ using System.Collections;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerInput : MonoBehaviour
 {
-    private PlayerMovement _playerMovement;
-    public Shooting _shooting;
+    private PlayerMovement playerMovement;
+    [SerializeField] private Shooting _shootingPoint;
+
+    // время между выстрелами
     [SerializeField] [Range(0,0.5f)] private float _timeToShoot;
-    private bool _switchShooting=true;
+
+    // время между перезарядкой каждого заряда
+    [SerializeField] private float _rechargingTime;
+
+    // реальное количество зарядов в магазине
+    [SerializeField] private int _cartrigesInMagazine;
+
+    // максимальное количество зарядов в магазине
+    [SerializeField] private int _maxCartrigesInMagazine;
+
+    // максимальное количество собранных зарядов
+    [SerializeField] private int _maxCartriges;
+
+    private bool switchShooting=true;
     
     private void Awake()
     {
-        _playerMovement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void FixedUpdate()
@@ -20,19 +35,34 @@ public class PlayerInput : MonoBehaviour
         float x = Input.GetAxis(GameData.HORIZONTAL_AXIS);
         float y = Input.GetAxis(GameData.VERTICAL_AXIS);
 
-        _playerMovement.Move(x, y);
+        playerMovement.Move(x, y);
         #endregion
 
         #region Fire
         bool fire = Input.GetButton(GameData.FIRE);
+        bool recharge = Input.GetButtonDown(GameData.RELOAD);
         
+        // огонь
         if (fire)
         {
-            if (_switchShooting)
+            if (switchShooting)
             {
-                _switchShooting = false;
+                switchShooting = false;
                 StartCoroutine(PlayerShooting());
             }
+        }
+
+
+        // перезарядка
+        if (recharge)
+        {
+            StartCoroutine(RechargingCartrige());
+        }
+
+        // автоперезарядка
+        if(_cartrigesInMagazine==0)
+        {
+            StartCoroutine(RechargingCartrige());
         }
         #endregion
     }
@@ -40,7 +70,31 @@ public class PlayerInput : MonoBehaviour
     IEnumerator PlayerShooting()
     {
         yield return new WaitForSeconds(_timeToShoot);
-        _shooting.SpawningObjects();
-        _switchShooting = true;
+        _shootingPoint.SpawningObjects();
+        switchShooting = true;
+    }
+
+    IEnumerator RechargingCartrige()
+    {
+        switchShooting = false;
+
+        // уменьшение скорости игрока
+        playerMovement.DecreaseSpeed();
+
+        while(_cartrigesInMagazine<_maxCartrigesInMagazine)
+        {
+            yield return new WaitForSeconds(_rechargingTime);
+            
+            if(_maxCartriges==0)
+            {
+                break;
+            }
+            _cartrigesInMagazine++;
+            _maxCartriges--;
+        }
+
+        // возвращение начальной скорости
+        playerMovement.IncreaseSpeed();
+        switchShooting = true;
     }
 }

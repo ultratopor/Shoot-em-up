@@ -10,6 +10,7 @@ TagManager:
   - Teleport
   - Ground
   - Dome
+  - AidKit
   layers:
   - Default
   - TransparentFX
