@@ -63,7 +63,6 @@ GameObject:
   - component: {fileID: 459653293857994669}
   - component: {fileID: 459653293857994658}
   - component: {fileID: 459653293857994656}
-  - component: {fileID: 459653293857994659}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -161,6 +160,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 2
+  _enemyFromSpawn: 0
+  _game: {fileID: 0}
+  _parentObject: {fileID: 0}
 --- !u!114 &459653293857994668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,10 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894b033ad5ae7cf4ba35a7d7dfdb1087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _shootingPoint: {fileID: 459653293267066063}
+  _player: {fileID: 0}
   _distanceToPlayer: 1
-  _timeToShoot: 6
 --- !u!114 &459653293857994669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,20 +227,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &459653293857994659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459653293857994657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd8fb6293d313743acf3ae3d0d07550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _teleport: {fileID: 0}
-  _minDistanse: 2
-  _maxDistanse: 15
-  _timeOpen: 4

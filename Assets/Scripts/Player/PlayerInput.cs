@@ -19,17 +19,25 @@ public class PlayerInput : MonoBehaviour
     // максимальное количество зарядов в магазине
     [SerializeField] private int _maxCartrigesInMagazine;
 
+    // количество собранных зарядов
+    [SerializeField] private int _currentCartriges;
+
     // максимальное количество собранных зарядов
     [SerializeField] private int _maxCartriges;
 
+    // количество зарядов в коробке 
+    [SerializeField] private int _cartrigeInKit;
+
     private bool switchShooting=true;
+
+    private bool rechargeIsOn=true;
     
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         #region Moving
         float x = Input.GetAxis(GameData.HORIZONTAL_AXIS);
@@ -40,29 +48,47 @@ public class PlayerInput : MonoBehaviour
 
         #region Fire
         bool fire = Input.GetButton(GameData.FIRE);
-        bool recharge = Input.GetButtonDown(GameData.RELOAD);
+        bool recharge = Input.GetButton(GameData.RELOAD);
         
         // огонь
         if (fire)
         {
-            if (switchShooting)
+            if (_cartrigesInMagazine > 0)
             {
-                switchShooting = false;
-                StartCoroutine(PlayerShooting());
+                if (switchShooting)
+                {
+                    switchShooting = false;
+                    StartCoroutine(PlayerShooting());
+                }
             }
         }
-
 
         // перезарядка
         if (recharge)
         {
-            StartCoroutine(RechargingCartrige());
+            if (_currentCartriges > 0)
+            {
+                if (rechargeIsOn)
+                {
+                    rechargeIsOn = false;
+                    switchShooting = false;
+                    StartCoroutine(RechargingCartrige());
+                }
+            }
         }
 
         // автоперезарядка
-        if(_cartrigesInMagazine==0)
+        if(_cartrigesInMagazine <= 0)
         {
-            StartCoroutine(RechargingCartrige());
+            if (_currentCartriges > 0)
+            {
+                if (rechargeIsOn)
+                {
+                    rechargeIsOn = false;
+                    switchShooting = false;
+                    StartCoroutine(RechargingCartrige());
+                }
+            }
         }
         #endregion
     }
@@ -71,30 +97,41 @@ public class PlayerInput : MonoBehaviour
     {
         yield return new WaitForSeconds(_timeToShoot);
         _shootingPoint.SpawningObjects();
+        _cartrigesInMagazine--;
         switchShooting = true;
     }
 
     IEnumerator RechargingCartrige()
     {
-        switchShooting = false;
+        
 
         // уменьшение скорости игрока
         playerMovement.DecreaseSpeed();
 
-        while(_cartrigesInMagazine<_maxCartrigesInMagazine)
+        for (int i = _cartrigesInMagazine; i < _maxCartrigesInMagazine; i++)
         {
             yield return new WaitForSeconds(_rechargingTime);
-            
-            if(_maxCartriges==0)
+
+            if (_currentCartriges <= 0)
             {
                 break;
             }
+
             _cartrigesInMagazine++;
-            _maxCartriges--;
+            _currentCartriges--;
+
         }
 
         // возвращение начальной скорости
         playerMovement.IncreaseSpeed();
         switchShooting = true;
+        rechargeIsOn = true;
+    }
+
+    // взаимодействие с коробков зарядов
+    public void TakeCartrigeKit()
+    {
+        _currentCartriges += _cartrigeInKit;
+        if (_currentCartriges > _maxCartriges) _currentCartriges = _maxCartriges;
     }
 }

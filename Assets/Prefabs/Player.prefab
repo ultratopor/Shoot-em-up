@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3089003152738476453}
   - component: {fileID: 7694074087019685351}
   - component: {fileID: 3549637686425400506}
+  - component: {fileID: 5709762336806779882}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -117,6 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 3
+  _enemyFromSpawn: 0
+  _game: {fileID: 0}
+  _parentObject: {fileID: 0}
 --- !u!114 &7694074087019685357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,7 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334e6dd3d0a14d444b5e1c1d3dc35dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  _speed: 0
+  _rechargeSpeed: 0
 --- !u!114 &7694074087019685356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a52baf3bc7db245acce06ff4a6ddf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shooting: {fileID: 7694074087401696641}
+  _shootingPoint: {fileID: 0}
   _timeToShoot: 0.21
+  _rechargingTime: 0
+  _cartrigesInMagazine: 0
+  _maxCartrigesInMagazine: 0
+  _currentCartriges: 0
+  _maxCartriges: 0
+  _cartrigeInKit: 0
 --- !u!114 &3089003152738476453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +202,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &5709762336806779882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7694074087019685359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3790919b20bc14abc2570e3135802b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aidKit: {fileID: 2574083885183257389, guid: 3054197b0029d5c4c871260b8a062254, type: 3}
+  _cartrigeKit: {fileID: 5383518150447741960, guid: bdf7f166c47463c40b5eec65869179ff, type: 3}
 --- !u!1 &7694074087401696643
 GameObject:
   m_ObjectHideFlags: 0

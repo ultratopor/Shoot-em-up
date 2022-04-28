@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 3871828567569259207}
   - component: {fileID: 3871828567569259205}
   - component: {fileID: 3871828567569259202}
+  - component: {fileID: 5164747819316302840}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -385,6 +386,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 1
+  _enemyFromSpawn: 0
+  _game: {fileID: 0}
+  _parentObject: {fileID: 0}
 --- !u!114 &3871828567569259209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +468,20 @@ MonoBehaviour:
   _enemy_4ExplosionArea: {fileID: 353788864751788280}
   _distanceToPlayer: 2
   _timeToStop: 1
+--- !u!114 &5164747819316302840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3871828567569259204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3790919b20bc14abc2570e3135802b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aidKit: {fileID: 0}
+  _cartrigeKit: {fileID: 0}
 --- !u!1 &3871828569228784041
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +592,7 @@ GameObject:
   - component: {fileID: 5095665977063943432}
   - component: {fileID: 5095665977063943434}
   - component: {fileID: 5095665977063943433}
+  - component: {fileID: 2220186882902236884}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -671,6 +690,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 4
+  _enemyFromSpawn: 0
+  _game: {fileID: 0}
+  _parentObject: {fileID: 0}
 --- !u!114 &5095665977063943430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -753,3 +775,17 @@ MonoBehaviour:
   _spawningTime: 1
   _timeToStartSpawning: 10
   _countOfSpawningEnemy_4: 10
+--- !u!114 &2220186882902236884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5095665977063943435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3790919b20bc14abc2570e3135802b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aidKit: {fileID: 0}
+  _cartrigeKit: {fileID: 0}

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _time: 3
+  _timeToDisactivate: 0
 --- !u!111 &1412736115058486552
 Animation:
   m_ObjectHideFlags: 0
@@ -224,6 +224,8 @@ GameObject:
   - component: {fileID: 2137109250582779910}
   - component: {fileID: 2137109250582779908}
   - component: {fileID: 2137109250582779911}
+  - component: {fileID: 3355691519033078239}
+  - component: {fileID: 874459336764359039}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -321,6 +323,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 2
+  _enemyFromSpawn: 0
+  _game: {fileID: 0}
+  _parentObject: {fileID: 0}
 --- !u!114 &2137109250582779912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,10 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _shootingPoint: {fileID: 2137109249959654251}
   _distanceToPlayer: 1
-  _timeToShoot: 6
-  _isEnemyShoot: 0
 --- !u!114 &2137109250582779913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,10 +404,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _teleport: {fileID: 12519219579029944}
-  _minDistanse: 2
-  _maxDistanse: 15
-  _timeOpen: 4
   _offset: 0
+--- !u!114 &3355691519033078239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137109250582779909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d6250b89402b44dabd053e056a4b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootingPoint: {fileID: 2137109249959654251}
+  _timeToShoot: 4
+  _timeToTeleport: 7
+--- !u!114 &874459336764359039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137109250582779909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec3790919b20bc14abc2570e3135802b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aidKit: {fileID: 0}
+  _cartrigeKit: {fileID: 0}
 --- !u!1 &4440800679486725346
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,3 +544,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 0.311
   _player: {fileID: 0}
+  _isFireBullet: 0
+  _enemyShootingPoint: {fileID: 0}

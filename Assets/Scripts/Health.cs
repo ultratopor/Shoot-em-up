@@ -16,14 +16,19 @@ public class Health : MonoBehaviour
 
     private bool isAlive=true;
 
-    //
+    // текущее количество здоровья
     [Range(0,4)] private int health;
+
+    // 
+    private SpawnerKits spawnerKits;
 
     private ActorView actorView;
 
     private void Awake()
     {
         actorView = GetComponent<ActorView>();
+
+        spawnerKits = GetComponent<SpawnerKits>();
     }
 
     private void OnEnable()
@@ -35,7 +40,12 @@ public class Health : MonoBehaviour
     {
         if (!isAlive)
         {
-            if (_enemyFromSpawn) _game.KillEnemy();
+            if (_enemyFromSpawn) 
+            {
+                _game.KillEnemy();
+            }
+
+            spawnerKits.SpawnKit();
             _parentObject.SetActive(false);
             transform.position = _parentObject.transform.position;
             isAlive = true;
